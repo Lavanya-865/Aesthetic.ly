@@ -240,7 +240,7 @@ if submit_button and uploaded_files:
       "selected_items": [
         {{
           "item_id": "The exact item_id string from the catalog list",
-          "vibe_justification": "Explain concisely how this item's visual elements match the style rules of the uploaded images. Use exactly 100-120 characters.Use casual language."
+          "vibe_justification": "Explain concisely how this item's visual elements match the style rules of the uploaded images. Use exactly 100-120 characters. Use casual language. Don't be too pretentious or fancy."
         }}
       ]
     }}
@@ -259,18 +259,19 @@ if submit_button and uploaded_files:
         
         for idx, selection in enumerate(data['selected_items']):
             item_details = next((item for item in MOCK_CATALOG if item["item_id"] == selection["item_id"]), None)
+            
             if item_details:
                 with cols[idx]:
-                    card_html = f"""<div style="display: flex; flex-direction: column; height: 100%; min-height: 500px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 15px; background-color: transparent;">
-<div style="width: 100%; height: 250px; overflow: hidden; border-radius: 8px; margin-bottom: 15px;">
+                    card_html = f"""<div style="display: flex; flex-direction: column; height: 550px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 15px; background-color: transparent; overflow: hidden;">
+<div style="width: 100%; height: 220px; flex-shrink: 0; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
 <img src="{item_details['image_url']}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
 </div>
-<h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">{item_details['title']}</h3>
-<p style="flex-grow: 1; font-style: italic; opacity: 0.8; font-size: 0.95rem; margin: 0 0 20px 0;">
+<h3 style="margin: 0 0 10px 0; font-size: 1.2rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.8rem;">{item_details['title']}</h3>
+<p style="flex-grow: 1; font-style: italic; opacity: 0.8; font-size: 0.95rem; margin: 0 0 15px 0; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
 {selection['vibe_justification']}
 </p>
-<a href="{item_details['buy_link']}" target="_blank" style="text-decoration: none; margin-top: auto;">
-<button style="width: 100%; padding: 12px; border-radius: 6px; border: none; background-color: #FF9900; color: white; cursor: pointer; font-weight: bold; transition: 0.2s;">
+<a href="{item_details['buy_link']}" target="_blank" style="text-decoration: none; margin-top: auto; flex-shrink: 0;">
+<button style="width: 100%; padding: 12px; border-radius: 6px; border: none; background-color: #FF9900; color: white; cursor: pointer; font-weight: bold;">
 Buy Now ↗
 </button>
 </a>
