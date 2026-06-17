@@ -258,4 +258,4 @@ if submit_button and uploaded_files:
         cols = st.columns(len(data['selected_items']))
         
         for idx, selection in enumerate(data['selected_items']):
-            item_details = next((item for item in MOCK_CATALOG if item["item_id"] == selection["item_id"]), None)c
+            item_details = next((item for item in MOCK_CATALOG if item["item_id"] == selection["item_id"]), None)
